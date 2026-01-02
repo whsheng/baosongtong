@@ -11,7 +11,9 @@
       "registrationEnd": "2025-12-20",
       "writtenExamDate": "2026-01-10",
       "interviewDate": "2026-01-15",
-      "officialUrl": "https://www.pku.edu.cn"
+      "officialUrl": "https://www.pku.edu.cn",
+      "address": "北京市海淀区颐和园路5号",
+      "tags": ["985", "211", "双一流"]
     },
     {
       "id": 2,
@@ -23,7 +25,9 @@
       "registrationEnd": "2025-12-22",
       "writtenExamDate": "2026-01-12",
       "interviewDate": "2026-01-18",
-      "officialUrl": "https://www.tsinghua.edu.cn"
+      "officialUrl": "https://www.tsinghua.edu.cn",
+      "address": "北京市海淀区清华园1号",
+      "tags": ["985", "211", "双一流"]
     },
     {
       "id": 3,
@@ -35,7 +39,9 @@
       "registrationEnd": "2025-12-15",
       "writtenExamDate": "2026-01-08",
       "interviewDate": "2026-01-12",
-      "officialUrl": "https://www.bfsu.edu.cn"
+      "officialUrl": "https://www.bfsu.edu.cn",
+      "address": "北京市海淀区西三环北路2号",
+      "tags": ["211", "双一流"]
     },
     {
       "id": 4,
@@ -47,7 +53,9 @@
       "registrationEnd": "2025-12-18",
       "writtenExamDate": "2026-01-09",
       "interviewDate": "2026-01-14",
-      "officialUrl": "https://www.shisu.edu.cn"
+      "officialUrl": "https://www.shisu.edu.cn",
+      "address": "上海市虹口区大连西路550号",
+      "tags": ["211", "双一流"]
     },
     {
       "id": 5,
@@ -59,7 +67,9 @@
       "registrationEnd": "2025-12-25",
       "writtenExamDate": "2026-01-11",
       "interviewDate": "2026-01-16",
-      "officialUrl": "https://www.cfau.edu.cn"
+      "officialUrl": "https://www.cfau.edu.cn",
+      "address": "北京市西城区展览馆路24号",
+      "tags": ["双一流"]
     },
     {
       "id": 6,
@@ -71,7 +81,9 @@
       "registrationEnd": "2025-12-23",
       "writtenExamDate": "2026-01-13",
       "interviewDate": "2026-01-19",
-      "officialUrl": "https://www.fudan.edu.cn"
+      "officialUrl": "https://www.fudan.edu.cn",
+      "address": "上海市杨浦区邯郸路220号",
+      "tags": ["985", "211", "双一流"]
     },
     {
       "id": 7,
@@ -83,7 +95,9 @@
       "registrationEnd": "2025-12-24",
       "writtenExamDate": "2026-01-14",
       "interviewDate": "2026-01-20",
-      "officialUrl": "https://www.nju.edu.cn"
+      "officialUrl": "https://www.nju.edu.cn",
+      "address": "江苏省南京市栖霞区仙林大道163号",
+      "tags": ["985", "211", "双一流"]
     },
     {
       "id": 8,
@@ -95,7 +109,9 @@
       "registrationEnd": "2025-12-26",
       "writtenExamDate": "2026-01-15",
       "interviewDate": "2026-01-21",
-      "officialUrl": "https://www.zju.edu.cn"
+      "officialUrl": "https://www.zju.edu.cn",
+      "address": "浙江省杭州市西湖区余杭塘路866号",
+      "tags": ["985", "211", "双一流"]
     },
     {
       "id": 9,
@@ -107,7 +123,9 @@
       "registrationEnd": "2025-12-27",
       "writtenExamDate": "2026-01-16",
       "interviewDate": "2026-01-22",
-      "officialUrl": "https://www.whu.edu.cn"
+      "officialUrl": "https://www.whu.edu.cn",
+      "address": "湖北省武汉市武昌区八一路299号",
+      "tags": ["985", "211", "双一流"]
     },
     {
       "id": 10,
@@ -119,7 +137,9 @@
       "registrationEnd": "2025-12-28",
       "writtenExamDate": "2026-01-17",
       "interviewDate": "2026-01-23",
-      "officialUrl": "https://www.sysu.edu.cn"
+      "officialUrl": "https://www.sysu.edu.cn",
+      "address": "广东省广州市海珠区新港西路135号",
+      "tags": ["985", "211", "双一流"]
     }
   ]
 }
