@@ -22,10 +22,10 @@ const Index = () => {
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <h1 className="text-xl font-bold md:text-2xl lg:text-3xl">
-                保送通 · {year}年外语保送招生
+                保送通 · 助您保送之路畅通无阻
               </h1>
               <p className="mt-1 text-sm text-muted-foreground md:text-base">
-                查看各院校笔试、面试时间安排，助您合理规划备考
+                查看{year}年各院校笔试、面试时间安排，助您合理规划备考
               </p>
             </div>
             <div className="flex items-center gap-2">
