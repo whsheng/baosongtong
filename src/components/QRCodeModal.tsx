@@ -14,7 +14,20 @@ export function QRCodeModal() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline" size="sm" className="gap-2">
+        <Button
+          variant="outline"
+          size="sm"
+          className="gap-2"
+          onClick={() => {
+            // Google Analytics Event Tracking
+            if (typeof window !== 'undefined' && (window as any).gtag) {
+              (window as any).gtag('event', 'click_contact_us', {
+                event_category: 'engagement',
+                event_label: 'header_contact_button'
+              });
+            }
+          }}
+        >
           <QrCode className="h-4 w-4" />
           <span className="hidden sm:inline">联系我们</span>
         </Button>
@@ -27,9 +40,9 @@ export function QRCodeModal() {
           </DialogDescription>
         </DialogHeader>
         <div className="flex flex-col items-center py-4">
-          <img 
-            src={wechatQrcode} 
-            alt="微信二维码" 
+          <img
+            src={wechatQrcode}
+            alt="微信二维码"
             className="w-48 h-auto rounded-lg"
           />
           <p className="mt-4 text-sm text-muted-foreground text-center">
