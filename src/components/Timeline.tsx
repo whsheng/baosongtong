@@ -1,12 +1,14 @@
 import { useMemo, useState } from 'react';
 import { TimelineEvent, School } from '@/types/school';
-import { format, startOfMonth, endOfMonth, eachDayOfInterval, isSameDay, addMonths, subMonths } from 'date-fns';
+import { format, startOfMonth, endOfMonth, eachDayOfInterval, isSameDay, addMonths, subMonths, isToday } from 'date-fns';
 import { zhCN } from 'date-fns/locale';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight, PenLine, MessageSquare } from 'lucide-react';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
+import { useIsMobile } from '@/hooks/use-mobile';
+import { MobileTimeline } from './MobileTimeline';
 
 interface TimelineProps {
   events: TimelineEvent[];
@@ -14,6 +16,16 @@ interface TimelineProps {
 }
 
 export function Timeline({ events, schools }: TimelineProps) {
+  const isMobile = useIsMobile();
+
+  if (isMobile) {
+    return <MobileTimeline events={events} schools={schools} />;
+  }
+
+  return <DesktopTimeline events={events} schools={schools} />;
+}
+
+function DesktopTimeline({ events, schools }: TimelineProps) {
   const [currentMonth, setCurrentMonth] = useState(new Date('2026-01-01'));
 
   const daysInMonth = useMemo(() => {
@@ -67,6 +79,12 @@ export function Timeline({ events, schools }: TimelineProps) {
           <div className="h-3 w-3 rounded-full bg-green-500" />
           <span>面试</span>
         </div>
+        {isToday(today) && (
+          <div className="flex items-center gap-1 text-destructive">
+            <div className="h-3 w-3 rounded-full bg-destructive" />
+            <span>今日</span>
+          </div>
+        )}
       </div>
 
       {/* Timeline Grid */}

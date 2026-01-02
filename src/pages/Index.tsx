@@ -7,6 +7,8 @@ import { Button } from '@/components/ui/button';
 import { ViewMode } from '@/types/school';
 import { CalendarDays, LayoutGrid } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { ShareButton } from '@/components/ShareButton';
+import { QRCodeModal } from '@/components/QRCodeModal';
 
 const Index = () => {
   const [viewMode, setViewMode] = useState<ViewMode>('timeline');
@@ -16,13 +18,21 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       {/* Header */}
       <header className="border-b border-border bg-card">
-        <div className="container mx-auto px-4 py-6">
-          <h1 className="text-2xl font-bold md:text-3xl">
-            {year}年外语保送招生信息查询
-          </h1>
-          <p className="mt-2 text-muted-foreground">
-            查看各院校笔试、面试时间安排，助您合理规划备考
-          </p>
+        <div className="container mx-auto px-4 py-4 md:py-6">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <h1 className="text-xl font-bold md:text-2xl lg:text-3xl">
+                保送通 · {year}年外语保送招生
+              </h1>
+              <p className="mt-1 text-sm text-muted-foreground md:text-base">
+                查看各院校笔试、面试时间安排，助您合理规划备考
+              </p>
+            </div>
+            <div className="flex items-center gap-2">
+              <QRCodeModal />
+              <ShareButton />
+            </div>
+          </div>
         </div>
       </header>
 
