@@ -53,6 +53,7 @@ export function Filters({
           <Input
             id="startDate"
             type="date"
+            lang="zh-CN"
             value={dateRange?.start || ''}
             onChange={(e) =>
               onDateRangeChange(
@@ -69,6 +70,7 @@ export function Filters({
           <Input
             id="endDate"
             type="date"
+            lang="zh-CN"
             value={dateRange?.end || ''}
             onChange={(e) =>
               onDateRangeChange(
