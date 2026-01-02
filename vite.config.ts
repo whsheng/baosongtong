@@ -13,8 +13,8 @@ export default defineConfig(({ mode }) => ({
   plugins: [
     react(),
     mode === "development" && componentTagger(),
-    VitePWA({
-      registerType: "autoUpdate",
+VitePWA({
+      registerType: "prompt",
       includeAssets: ["favicon.ico", "apple-touch-icon.png", "pwa-512x512.png"],
       manifest: {
         name: "保送通",
