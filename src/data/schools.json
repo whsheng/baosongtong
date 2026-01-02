@@ -1,0 +1,125 @@
+{
+  "year": 2026,
+  "schools": [
+    {
+      "id": 1,
+      "name": "北京大学",
+      "plan": 50,
+      "limit": 2,
+      "brochureDate": "2025-12-01",
+      "registrationStart": "2025-12-10",
+      "registrationEnd": "2025-12-20",
+      "writtenExamDate": "2026-01-10",
+      "interviewDate": "2026-01-15",
+      "officialUrl": "https://www.pku.edu.cn"
+    },
+    {
+      "id": 2,
+      "name": "清华大学",
+      "plan": 48,
+      "limit": 2,
+      "brochureDate": "2025-12-02",
+      "registrationStart": "2025-12-12",
+      "registrationEnd": "2025-12-22",
+      "writtenExamDate": "2026-01-12",
+      "interviewDate": "2026-01-18",
+      "officialUrl": "https://www.tsinghua.edu.cn"
+    },
+    {
+      "id": 3,
+      "name": "北京外国语大学",
+      "plan": 150,
+      "limit": 3,
+      "brochureDate": "2025-11-25",
+      "registrationStart": "2025-12-05",
+      "registrationEnd": "2025-12-15",
+      "writtenExamDate": "2026-01-08",
+      "interviewDate": "2026-01-12",
+      "officialUrl": "https://www.bfsu.edu.cn"
+    },
+    {
+      "id": 4,
+      "name": "上海外国语大学",
+      "plan": 120,
+      "limit": 3,
+      "brochureDate": "2025-11-28",
+      "registrationStart": "2025-12-08",
+      "registrationEnd": "2025-12-18",
+      "writtenExamDate": "2026-01-09",
+      "interviewDate": "2026-01-14",
+      "officialUrl": "https://www.shisu.edu.cn"
+    },
+    {
+      "id": 5,
+      "name": "外交学院",
+      "plan": 40,
+      "limit": 2,
+      "brochureDate": "2025-12-05",
+      "registrationStart": "2025-12-15",
+      "registrationEnd": "2025-12-25",
+      "writtenExamDate": "2026-01-11",
+      "interviewDate": "2026-01-16",
+      "officialUrl": "https://www.cfau.edu.cn"
+    },
+    {
+      "id": 6,
+      "name": "复旦大学",
+      "plan": 45,
+      "limit": 2,
+      "brochureDate": "2025-12-03",
+      "registrationStart": "2025-12-13",
+      "registrationEnd": "2025-12-23",
+      "writtenExamDate": "2026-01-13",
+      "interviewDate": "2026-01-19",
+      "officialUrl": "https://www.fudan.edu.cn"
+    },
+    {
+      "id": 7,
+      "name": "南京大学",
+      "plan": 35,
+      "limit": 2,
+      "brochureDate": "2025-12-04",
+      "registrationStart": "2025-12-14",
+      "registrationEnd": "2025-12-24",
+      "writtenExamDate": "2026-01-14",
+      "interviewDate": "2026-01-20",
+      "officialUrl": "https://www.nju.edu.cn"
+    },
+    {
+      "id": 8,
+      "name": "浙江大学",
+      "plan": 40,
+      "limit": 2,
+      "brochureDate": "2025-12-06",
+      "registrationStart": "2025-12-16",
+      "registrationEnd": "2025-12-26",
+      "writtenExamDate": "2026-01-15",
+      "interviewDate": "2026-01-21",
+      "officialUrl": "https://www.zju.edu.cn"
+    },
+    {
+      "id": 9,
+      "name": "武汉大学",
+      "plan": 38,
+      "limit": 3,
+      "brochureDate": "2025-12-07",
+      "registrationStart": "2025-12-17",
+      "registrationEnd": "2025-12-27",
+      "writtenExamDate": "2026-01-16",
+      "interviewDate": "2026-01-22",
+      "officialUrl": "https://www.whu.edu.cn"
+    },
+    {
+      "id": 10,
+      "name": "中山大学",
+      "plan": 42,
+      "limit": 2,
+      "brochureDate": "2025-12-08",
+      "registrationStart": "2025-12-18",
+      "registrationEnd": "2025-12-28",
+      "writtenExamDate": "2026-01-17",
+      "interviewDate": "2026-01-23",
+      "officialUrl": "https://www.sysu.edu.cn"
+    }
+  ]
+}
