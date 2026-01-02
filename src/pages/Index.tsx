@@ -30,7 +30,7 @@ const Index = () => {
             </div>
             <div className="flex items-center gap-2">
               <QRCodeModal />
-              <ShareButton />
+              <ShareButton schoolCount={schools.length} year={year} />
             </div>
           </div>
         </div>

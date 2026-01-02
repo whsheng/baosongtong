@@ -1,13 +1,15 @@
 import { useState } from 'react';
-import { Share2, Copy, Check, MessageCircle } from 'lucide-react';
+import { Share2, Copy, Check, Image } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { toast } from '@/hooks/use-toast';
+import { ShareCardModal } from './ShareCardModal';
 
 // 社交平台图标组件
 const WechatIcon = () => (
@@ -38,20 +40,20 @@ interface ShareButtonProps {
   title?: string;
   description?: string;
   url?: string;
+  schoolCount?: number;
+  year?: number;
 }
 
 export function ShareButton({
-  title = '保送通 - 外语保送招生一站式查询',
+  title = '保送通 - 助您保送之路畅通无阻',
   description = '查看各院校笔试、面试时间安排，助您合理规划备考',
   url = typeof window !== 'undefined' ? window.location.href : '',
+  schoolCount = 0,
+  year = new Date().getFullYear(),
 }: ShareButtonProps) {
   const [copied, setCopied] = useState(false);
-
-  const shareContent = {
-    title,
-    description,
-    url,
-  };
+  const [shareModalOpen, setShareModalOpen] = useState(false);
+  const [sharePlatform, setSharePlatform] = useState<'wechat' | 'xiaohongshu' | 'weibo' | 'douyin'>('wechat');
 
   const copyLink = async () => {
     try {
@@ -76,60 +78,56 @@ export function ShareButton({
     window.open(weiboUrl, '_blank', 'width=600,height=500');
   };
 
-  const shareToWechat = () => {
-    toast({
-      title: '微信分享',
-      description: '请截图或复制链接后在微信中分享',
-    });
-    copyLink();
-  };
-
-  const shareToXiaohongshu = () => {
-    toast({
-      title: '小红书分享',
-      description: '请复制链接后在小红书中发布笔记分享',
-    });
-    copyLink();
-  };
-
-  const shareToDouyin = () => {
-    toast({
-      title: '抖音分享',
-      description: '请复制链接后在抖音中分享',
-    });
-    copyLink();
+  const openShareCard = (platform: 'wechat' | 'xiaohongshu' | 'weibo' | 'douyin') => {
+    setSharePlatform(platform);
+    setShareModalOpen(true);
   };
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="sm" className="gap-2">
-          <Share2 className="h-4 w-4" />
-          <span className="hidden sm:inline">分享</span>
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-48">
-        <DropdownMenuItem onClick={shareToWechat} className="gap-2 cursor-pointer">
-          <WechatIcon />
-          微信
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={shareToWeibo} className="gap-2 cursor-pointer">
-          <WeiboIcon />
-          微博
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={shareToXiaohongshu} className="gap-2 cursor-pointer">
-          <XiaohongshuIcon />
-          小红书
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={shareToDouyin} className="gap-2 cursor-pointer">
-          <DouyinIcon />
-          抖音
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={copyLink} className="gap-2 cursor-pointer">
-          {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
-          {copied ? '已复制' : '复制链接'}
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <>
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button variant="outline" size="sm" className="gap-2">
+            <Share2 className="h-4 w-4" />
+            <span className="hidden sm:inline">分享</span>
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="end" className="w-48">
+          <DropdownMenuItem onClick={() => openShareCard('wechat')} className="gap-2 cursor-pointer">
+            <WechatIcon />
+            微信分享卡片
+          </DropdownMenuItem>
+          <DropdownMenuItem onClick={() => openShareCard('xiaohongshu')} className="gap-2 cursor-pointer">
+            <XiaohongshuIcon />
+            小红书分享卡片
+          </DropdownMenuItem>
+          <DropdownMenuItem onClick={() => openShareCard('weibo')} className="gap-2 cursor-pointer">
+            <WeiboIcon />
+            微博分享卡片
+          </DropdownMenuItem>
+          <DropdownMenuItem onClick={() => openShareCard('douyin')} className="gap-2 cursor-pointer">
+            <DouyinIcon />
+            抖音分享卡片
+          </DropdownMenuItem>
+          <DropdownMenuSeparator />
+          <DropdownMenuItem onClick={shareToWeibo} className="gap-2 cursor-pointer">
+            <WeiboIcon />
+            直接分享到微博
+          </DropdownMenuItem>
+          <DropdownMenuItem onClick={copyLink} className="gap-2 cursor-pointer">
+            {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
+            {copied ? '已复制' : '复制链接'}
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
+
+      <ShareCardModal
+        open={shareModalOpen}
+        onOpenChange={setShareModalOpen}
+        platform={sharePlatform}
+        schoolCount={schoolCount}
+        year={year}
+      />
+    </>
   );
 }
