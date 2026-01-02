@@ -1,6 +1,5 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import html2canvas from 'html2canvas';
-import QRCode from 'qrcode';
 import { Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
@@ -11,6 +10,7 @@ import {
 } from '@/components/ui/dialog';
 import { toast } from '@/hooks/use-toast';
 import logoImage from '/apple-touch-icon.png';
+import bstWebsiteQrcode from '@/assets/bst-website.png';
 
 const platformConfig = {
   wechat: { name: '微信' },
@@ -35,19 +35,7 @@ export function ShareCardModal({
   year,
 }: ShareCardModalProps) {
   const [generating, setGenerating] = useState(false);
-  const [qrCodeUrl, setQrCodeUrl] = useState<string>('');
   const cardRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    QRCode.toDataURL('https://bst.k12go.com', {
-      width: 160,
-      margin: 1,
-      color: {
-        dark: '#000000',
-        light: '#ffffff',
-      },
-    }).then(setQrCodeUrl);
-  }, []);
 
   const generateCard = async () => {
     if (!cardRef.current) return;
@@ -106,9 +94,9 @@ export function ShareCardModal({
               <div className="relative z-10 flex flex-1 flex-col items-center justify-center gap-3 text-center">
                 {/* Logo 和标题 */}
                 <div className="flex items-center gap-2">
-                  <img 
-                    src={logoImage} 
-                    alt="保送通" 
+                  <img
+                    src={logoImage}
+                    alt="保送通"
                     className="h-12 w-12 rounded-xl"
                   />
                   <span className="text-2xl font-bold">保送通</span>
@@ -119,7 +107,8 @@ export function ShareCardModal({
                 {/* 主要信息 */}
                 <div className="mt-2 space-y-1">
                   <div className="text-3xl font-bold">{year}年保送日历</div>
-                  <div className="text-lg">覆盖 {schoolCount} 所高校</div>
+                  {/* <div className="text-lg">覆盖 {schoolCount} 所高校</div> */}
+                  <div className="text-lg">覆盖全国所有高校</div>
                 </div>
 
                 <div className="mt-2 rounded-full bg-white/20 px-4 py-1.5 text-sm">
@@ -129,17 +118,17 @@ export function ShareCardModal({
 
               {/* 二维码区域 */}
               <div className="relative z-10 flex flex-col items-center gap-2">
-                {qrCodeUrl && (
-                  <img 
-                    src={qrCodeUrl} 
-                    alt="网站二维码" 
-                    className="h-20 w-20 rounded-lg bg-white p-1"
-                  />
-                )}
-                <div className="text-center text-sm opacity-90">
+                <img
+                  src={bstWebsiteQrcode}
+                  alt="网站二维码"
+                  className="h-40 w-40 rounded-lg bg-white p-1"
+                />
+
+                {/* <div className="text-center text-sm opacity-90">
                   <p>扫码查看详情</p>
                   <p className="text-xs opacity-70">bst.k12go.com</p>
-                </div>
+                </div> */}
+
               </div>
             </div>
           </div>

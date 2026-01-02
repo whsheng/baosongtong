@@ -1,73 +1,76 @@
-# Welcome to your Lovable project
+# BST（保送通）| 全网最全保送信息查询平台
 
-## Project info
+> **Live Demo:** [bst.k12go.com](https://bst.k12go.com)
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+**BST (保送通)** is a specialized information aggregation and planning tool designed for high school students in China seeking recommended admission (保送) to top-tier universities, specifically focusing on the 2026 admission cycle.
 
-## How can I edit this code?
+Navigating the complex landscape of university admission schedules, quotas, and constraints can be overwhelming. BST solves this by providing a unified "command center" for students and parents to visualize timelines, compare schools, and strategically plan their application process.
 
-There are several ways of editing your application.
+## 🚀 Key Features
 
-**Use Lovable**
+- **Exam & Interview Timeline**: A visual calendar view to track conflicting written exams and interview dates across multiple universities.
+- **University Profiles**: Detailed cards for each institution featuring:
+  - Admission Quotas (Planned numbers).
+  - Key Dates: Brochure release, registration deadlines, and testing schedules.
+  - Tags: 985, 211, Double First Class status.
+  - Constraints: "Application Limit" indicators (e.g., "Limit 2 schools").
+- **Smart Filtering**: Search by school name or filter by specific application restrictions to find eligible programs.
+- **Countdown Timers**: Stay aware of upcoming critical deadlines.
+- **Direct Access**: Quick links to official admission brochures and map locations for exam venues.
+- **Responsive Design**: Optimized for both desktop and mobile viewing.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+## 🛠 Tech Stack
 
-Changes made via Lovable will be committed automatically to this repo.
+This project is built with a modern frontend stack ensuring speed and simplified maintenance:
 
-**Use your preferred IDE**
+- **Framework**: [React](https://react.dev/) + [Vite](https://vitejs.dev/)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **UI Components**: [shadcn/ui](https://ui.shadcn.com/) (based on Radix UI)
+- **Routing**: React Router
+- **State/Data Fetching**: TanStack Query
+- **Charts/Visuals**: Recharts
+- **Utilities**: date-fns (Date manipulation), lucide-react (Icons)
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## 📦 Local Development
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+To run this project locally, follow these steps:
 
-Follow these steps:
+### Prerequisites
+- Node.js & npm installed (Recommended: Use [nvm](https://github.com/nvm-sh/nvm)).
+
+### Installation
+
+1.  **Clone the repository**
+    ```sh
+    git clone <YOUR_GIT_URL>
+    cd baosongtong
+    ```
+
+2.  **Install dependencies**
+    ```sh
+    npm install
+    ```
+
+3.  **Start the development server**
+    ```sh
+    npm run dev
+    ```
+    Open `http://localhost:8080` (or the port shown in your terminal) to view the app.
+
+## 🏗 Build & Deploy
+
+To create a production build:
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+npm run build
 ```
 
-**Edit a file directly in GitHub**
+This will generate a `dist` folder containing the static assets ready for deployment. The project is currently deployed on [Vercel](https://vercel.com/) (or similar static hosting), as seen at `bst.k12go.com`.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 🤝 Contributing
 
-**Use GitHub Codespaces**
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+---
 
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
