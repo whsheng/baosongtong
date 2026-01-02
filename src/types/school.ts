@@ -9,6 +9,8 @@ export interface School {
   writtenExamDate: string;
   interviewDate: string;
   officialUrl: string;
+  address: string;
+  tags: ('985' | '211' | '双一流')[];
 }
 
 export interface SchoolData {
