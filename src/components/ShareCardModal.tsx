@@ -1,6 +1,7 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import html2canvas from 'html2canvas';
-import { Download, X } from 'lucide-react';
+import QRCode from 'qrcode';
+import { Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   Dialog,
@@ -9,8 +10,14 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog';
 import { toast } from '@/hooks/use-toast';
+import logoImage from '/apple-touch-icon.png';
 
-type CardSize = 'square' | 'vertical' | 'horizontal';
+const platformConfig = {
+  wechat: { name: '微信' },
+  xiaohongshu: { name: '小红书' },
+  weibo: { name: '微博' },
+  douyin: { name: '抖音' },
+};
 
 interface ShareCardModalProps {
   open: boolean;
@@ -20,19 +27,6 @@ interface ShareCardModalProps {
   year: number;
 }
 
-const platformConfig = {
-  wechat: { name: '微信', defaultSize: 'square' as CardSize },
-  xiaohongshu: { name: '小红书', defaultSize: 'vertical' as CardSize },
-  weibo: { name: '微博', defaultSize: 'horizontal' as CardSize },
-  douyin: { name: '抖音', defaultSize: 'horizontal' as CardSize },
-};
-
-const sizeConfig = {
-  square: { width: 400, height: 400, label: '1:1 方形' },
-  vertical: { width: 360, height: 480, label: '3:4 竖版' },
-  horizontal: { width: 480, height: 270, label: '16:9 横版' },
-};
-
 export function ShareCardModal({
   open,
   onOpenChange,
@@ -40,9 +34,20 @@ export function ShareCardModal({
   schoolCount,
   year,
 }: ShareCardModalProps) {
-  const [cardSize, setCardSize] = useState<CardSize>(platformConfig[platform].defaultSize);
   const [generating, setGenerating] = useState(false);
+  const [qrCodeUrl, setQrCodeUrl] = useState<string>('');
   const cardRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    QRCode.toDataURL('https://bst.k12go.com', {
+      width: 160,
+      margin: 1,
+      color: {
+        dark: '#000000',
+        light: '#ffffff',
+      },
+    }).then(setQrCodeUrl);
+  }, []);
 
   const generateCard = async () => {
     if (!cardRef.current) return;
@@ -63,7 +68,7 @@ export function ShareCardModal({
 
       toast({
         title: '图片已生成',
-        description: `请在${platformConfig[platform].name}中分享此图片`,
+        description: '移动端请长按图片保存到相册',
       });
     } catch (error) {
       toast({
@@ -76,35 +81,19 @@ export function ShareCardModal({
     }
   };
 
-  const { width, height } = sizeConfig[cardSize];
-
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-lg">
+      <DialogContent className="max-w-md">
         <DialogHeader>
           <DialogTitle>生成{platformConfig[platform].name}分享卡片</DialogTitle>
         </DialogHeader>
 
         <div className="space-y-4">
-          {/* 尺寸选择 */}
-          <div className="flex gap-2">
-            {(Object.keys(sizeConfig) as CardSize[]).map((size) => (
-              <Button
-                key={size}
-                variant={cardSize === size ? 'default' : 'outline'}
-                size="sm"
-                onClick={() => setCardSize(size)}
-              >
-                {sizeConfig[size].label}
-              </Button>
-            ))}
-          </div>
-
           {/* 卡片预览 */}
-          <div className="flex justify-center overflow-auto py-4">
+          <div className="flex justify-center overflow-auto py-2">
             <div
               ref={cardRef}
-              style={{ width: `${width}px`, height: `${height}px` }}
+              style={{ width: '360px', height: '480px' }}
               className="relative flex flex-col items-center justify-between rounded-xl bg-gradient-to-br from-primary via-primary/90 to-primary/80 p-6 text-primary-foreground shadow-xl"
             >
               {/* 装饰背景 */}
@@ -114,12 +103,14 @@ export function ShareCardModal({
               </div>
 
               {/* 内容 */}
-              <div className="relative z-10 flex flex-1 flex-col items-center justify-center gap-4 text-center">
+              <div className="relative z-10 flex flex-1 flex-col items-center justify-center gap-3 text-center">
                 {/* Logo 和标题 */}
                 <div className="flex items-center gap-2">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/20 text-xl font-bold">
-                    保
-                  </div>
+                  <img 
+                    src={logoImage} 
+                    alt="保送通" 
+                    className="h-12 w-12 rounded-xl"
+                  />
                   <span className="text-2xl font-bold">保送通</span>
                 </div>
 
@@ -136,9 +127,19 @@ export function ShareCardModal({
                 </div>
               </div>
 
-              {/* 底部 */}
-              <div className="relative z-10 mt-4 flex items-center gap-3 text-sm opacity-80">
-                <span>扫码或搜索「保送通」查看详情</span>
+              {/* 二维码区域 */}
+              <div className="relative z-10 flex flex-col items-center gap-2">
+                {qrCodeUrl && (
+                  <img 
+                    src={qrCodeUrl} 
+                    alt="网站二维码" 
+                    className="h-20 w-20 rounded-lg bg-white p-1"
+                  />
+                )}
+                <div className="text-center text-sm opacity-90">
+                  <p>扫码查看详情</p>
+                  <p className="text-xs opacity-70">bst.k12go.com</p>
+                </div>
               </div>
             </div>
           </div>
